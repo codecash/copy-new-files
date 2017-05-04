@@ -27,7 +27,7 @@ for file in $(cat .copynew); do
     fi
   done
   if [ $found = 0 ]; then
-    cp -r "$COPYNEW_SOURCE_DIRECTORY/$file" "$COPYNEW_DESTIN_DIRECTORY/$file"
+    rsync -avhz "$COPYNEW_SOURCE_DIRECTORY/$file" "$COPYNEW_DESTIN_DIRECTORY/$file"
   fi
 done
 
