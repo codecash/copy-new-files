@@ -27,7 +27,7 @@ for file in $(cat .copynew); do
     fi
   done
   if [ $found = 0 ]; then
-    rsync -avhz --progress "$COPYNEW_SOURCE_DIRECTORY/$file" "$COPYNEW_DESTIN_DIRECTORY/$file"
+    ln -s "$COPYNEW_SOURCE_DIRECTORY/$file" "$COPYNEW_DESTIN_DIRECTORY/$file"
   fi
 done
 
