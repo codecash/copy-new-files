@@ -27,6 +27,7 @@ while read file; do
     fi
   done < .copyold
   if [ $found = 0 ]; then
+    echo "$COPYNEW_SOURCE_DIRECTORY/$file"
     ln -s "$COPYNEW_SOURCE_DIRECTORY/$file" "$COPYNEW_DESTIN_DIRECTORY/$file"
   fi
 done < .copynew
