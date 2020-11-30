@@ -18,18 +18,18 @@ touch .copynew .copyold
 
 ls -1 "$COPYNEW_SOURCE_DIRECTORY" > .copynew
 
-for file in $(cat .copynew); do
+while read file; do
   found=0
-  for old in $(cat .copyold); do
+  while read old; do
     if [ "$file" == "$old" ]; then
       found=1
       break
     fi
-  done
+  done < .copyold
   if [ $found = 0 ]; then
     ln -s "$COPYNEW_SOURCE_DIRECTORY/$file" "$COPYNEW_DESTIN_DIRECTORY/$file"
   fi
-done
+done < .copynew
 
 # make sure tempfile not empty so as to not overwrite
 # extract log in event of connection issues, errors, etc.
